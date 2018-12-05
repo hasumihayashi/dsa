@@ -41,6 +41,16 @@ class BinaryTree {
         console.log(v.val);
     }
 
+    inOrder(T, v) {
+        if(v.left && v.right) {
+            this.inOrder(T, v.left);
+        }
+        console.log(v.val);
+        if(v.left && v.right) {
+            this.inOrder(T, v.right);
+        }
+    }
+
 }
 
 let tree = new BinaryTree(6);
@@ -55,4 +65,5 @@ tree.root.right.right = new Node(9);
 
 console.log(tree)
 //tree.preOrder(tree, tree.root);
-tree.postOrder(tree, tree.root);
+//tree.postOrder(tree, tree.root);
+tree.inOrder(tree, tree.root);
