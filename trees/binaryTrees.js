@@ -22,7 +22,7 @@ class BinaryTree {
         queue.push(this.root);
 
         while(queue.length !== 0) {
-            let temp = queue.pop();
+            let temp = queue.shift();
             
             if(!temp.left) {
                 temp.left = new Node(data);
@@ -49,7 +49,9 @@ class BinaryTree {
 
     getMaxNode() {}
 
-    getRootNode() {}
+    getRootNode() {
+        return this.root.data;
+    }
 
     height() {
         return 0;
