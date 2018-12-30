@@ -7,11 +7,39 @@ class Node {
 }
 
 class BinaryTree {
-    constructor(data) {
-        this.root = new Node(data);
+    constructor() {
+        this.root = null;
     }
 
-    insert(data) {}
+    // insertion using a level traversal O(n)
+    // unshift() method adds one or more elements to the beginning of an array and returns the new length of the array
+    insert(data) {
+        if(!this.root) {
+            this.root = new Node(data);
+            return;
+        } 
+        let queue = [];
+        queue.push(this.root);
+
+        while(queue.length !== 0) {
+            let temp = queue.pop();
+            
+            if(!temp.left) {
+                temp.left = new Node(data);
+                break;
+            } else {
+                queue.unshift(temp.left);
+            }
+
+            if(!temp.right) {
+                temp.right = new Node(data);
+                break;
+            } else {
+                queue.unshift(temp.right);
+            }
+        }
+    }
+
 
     delete(data) {}
 
