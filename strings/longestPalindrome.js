@@ -1,42 +1,40 @@
 /**
  * @param {string} s
  * @return {number}
+ 
+ TC: O(N)
+ SC: O(N)
+ 
+ palindrome can have as many pairs or even # chars, but at most 1 odd # chars
  */
 
-const longestPalindrome = s => {
-    let map = new Map();
-    for (let ch of s) {
-        if (map.has(ch)) { map.delete(ch); } 
-        else { map.set(ch, 1); } 
-    }
-    return map.size === 0 ? s.length : s.length - map.size + 1;
-};
-
-/*
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
 var longestPalindrome = function(s) {
-
-    let map = {};
-    for(let i = 0; i < s.length; i++) {
-        if(map[s[i]]) {
-            map[s[i]]++;
-        } else {
-            map[s[i]] = 1;
-        }
+    let charMap = {};
+  
+    for (let i = 0; i < s.length; i++) {
+      let c = s[i];
+      charMap[c] = charMap[c] + 1 || 1;
     }
-    //get distinct lengths
-    let unique = []
-    for(var key in map) {
-        if(unique.includes(map[key])) {
-            continue;
-        } else {
-            unique.push(map[key]);
+  
+    let hasOdd = false;
+  
+    return Object.keys(charMap).reduce((p, key) => {
+      const count = charMap[key];
+  
+      const amtOfPairs = Math.floor(count / 2);
+  
+      if (amtOfPairs) {
+        p += amtOfPairs * 2;
+      }
+  
+      if (count % 2 !== 0) {
+        if (!hasOdd) {
+          p += 1;
+          hasOdd = true;
         }
-    }
-    return unique.reduce(reducer);
-};
-
-longestPalindrome("abccccdd")
-
-*/
+      }
+  
+      return p;
+    }, 0);
+  };
