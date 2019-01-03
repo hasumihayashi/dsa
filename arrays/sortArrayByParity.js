@@ -6,6 +6,22 @@
  SC: O(N)
  */
 
+var sortArrayByParity = function(A) {
+    let oddIndex = A.length - 1;
+    let evenIndex = 0;
+    let a = [];
+    A.forEach(v => {
+        if(v % 2 === 0) {
+            a[evenIndex] = v;
+            evenIndex++;
+        } else {
+            a[oddIndex] = v;
+            oddIndex--;
+        }
+    });
+    return a;
+};
+
 /*
 Another solution:
 
@@ -28,18 +44,3 @@ var sortArrayByParity = function(A) {
 }
 */
 
-var sortArrayByParity = function(A) {
-    let oddIndex = A.length - 1;
-    let evenIndex = 0;
-    const a = new Array(A.length - 1);
-    A.forEach(v => {
-        if(v % 2 === 0) {
-            a[evenIndex] = v;
-            evenIndex++;
-        } else {
-            a[oddIndex] = v;
-            oddIndex--;
-        }
-    });
-    return a;
-};
