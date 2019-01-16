@@ -16,6 +16,7 @@ class BinarySearchTree {
         let currentNode = this.root;
         if(!currentNode) {
             currentNode = newNode;
+            return;
         }
         if(val <= currentNode.val) 
             if(!currentNode.left) {
@@ -65,8 +66,8 @@ class BinarySearchTree {
             this.inOrder(T, v.right);
         }
     }
-
 }
+
 
 let tree = new BinarySearchTree(6);
 tree.root.left = new Node(3);

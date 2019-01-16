@@ -58,6 +58,7 @@ class BinaryTree {
     }
 
     // Traversals
+    // Breadth-first Search
     levelOrderTraversal() {
         if(!this.root) return;
 
@@ -89,6 +90,10 @@ class BinaryTree {
 
     checkIfExists(data) {
 
+    }
+
+    depthFirstSearch(root) {
+        
     }
    
 
